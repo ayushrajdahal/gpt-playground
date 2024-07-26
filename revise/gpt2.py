@@ -182,7 +182,7 @@ import tiktoken
 enc = tiktoken.get_encoding('gpt2')
 tokens = enc.encode("Hi, I am David. I am")
 tokens = torch.tensor(tokens, dtype=torch.long) # (8,)
-tokens = tokens.unsqueeze(0).repeat(num_return_sequences, 1) # (5, 8)
+tokens = tokens.unsqueeze(0).repeat(num_return_sequences, 1) # (5, 8) TODO: see why we unsqueeze and repeat
 x = tokens.to(device)
 
 # generate! right now x is (B, T) where B = 5, T = 8
